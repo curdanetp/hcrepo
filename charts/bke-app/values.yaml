@@ -8,7 +8,7 @@ image:
   repository: "curdanetp/bke-app"
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v1.0.1"
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
