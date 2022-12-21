@@ -32,38 +32,7 @@ spec:
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          env:
-            - name: "DB_USER"
-              valueFrom:
-                secretKeyRef:
-                  key:  dbuser
-                  name: {{ .Release.Name }}-auth
-            - name: "DB_PASSWORD"
-              valueFrom:
-                secretKeyRef:
-                  key:  dbpwd
-                  name: {{ .Release.Name }}-auth
-            - name: "DB_HOST"
-              valueFrom:
-                secretKeyRef:
-                  key:  dbhost
-                  name: {{ .Release.Name }}-auth
-            - name: "DB_DATABASE"
-              valueFrom:
-                secretKeyRef:
-                  key:  dbname
-                  name: {{ .Release.Name }}-auth
-            - name: "DB_PORT"
-              valueFrom:
-                secretKeyRef:
-                  key:  dbport
-                  name: {{ .Release.Name }}-auth
-            - name: "PORT"
-              valueFrom:
-                secretKeyRef:
-                  key:  svport
-                  name: {{ .Release.Name }}-auth                                                                                          
+          imagePullPolicy: {{ .Values.image.pullPolicy }}                                                                                  
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
