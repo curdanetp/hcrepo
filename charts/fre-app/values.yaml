@@ -1,11 +1,11 @@
-# Default values for bke-app.
+# Default values for fre-app.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: "curdanetp/bke-app"
+  repository: "curdanetp/fre-app"
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
@@ -38,9 +38,9 @@ securityContext: {}
 
 service:
   type: NodePort
-  port: 4000
-  nodeport: 30004
-  targetport: 4000
+  port: 80
+  nodeport: 30001
+  targetport: 80
 
 ingress:
   enabled: false
@@ -58,7 +58,7 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
-resources: 
+resources:
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -69,6 +69,7 @@ resources:
   requests:
     cpu: "100m"
     memory: "128Mi"
+
 autoscaling:
   enabled: true
   minReplicas: 3
@@ -81,10 +82,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
-dbuser: "curdanet"
-dbpwd:  "adriana"
-dbhost: "192.168.1.85"
-dbname: "tasksdb"
-dbport: "5432"
-svport: "4000"
