@@ -77,7 +77,7 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   targetMemoryUtilizationPercentage: 80
 
-nodeSelector: { "bke-app" }
+# nodeSelector: { "bke-app" }
 
 tolerations: []
 
