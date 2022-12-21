@@ -14,15 +14,19 @@ spec:
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:
     {{- if .Values.autoscaling.targetCPUUtilizationPercentage }}
-    - type: Resource
-      resource:
+    - resource:
         name: cpu
-        targetAverageUtilization: {{ .Values.autoscaling.targetCPUUtilizationPercentage }}
+        target:
+          averageValue: {{ print ( mul (trimSuffix "m" .Values.resources.requests.cpu) 3 ) "m" }}
+          type: AverageValue
+      type: Resource
     {{- end }}
     {{- if .Values.autoscaling.targetMemoryUtilizationPercentage }}
-    - type: Resource
-      resource:
+    - resource:
         name: memory
-        targetAverageUtilization: {{ .Values.autoscaling.targetMemoryUtilizationPercentage }}
+        target:
+          averageValue: {{ print ( mul (trimSuffix "Mi" .Values.resources.requests.memory) 3 ) "Mi" }}
+          type: AverageValue
+      type: Resource
     {{- end }}
 {{- end }}
