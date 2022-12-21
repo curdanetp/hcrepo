@@ -82,3 +82,10 @@ nodeSelector: { "bke-app" }
 tolerations: []
 
 affinity: {}
+
+dbuser: "curdanet"
+dbpwd:  "adriana"
+dbhost: "192.168.1.85"
+dbname: "tasksdb"
+dbport: "5432"
+svport: "4000"
