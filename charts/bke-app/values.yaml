@@ -57,7 +57,14 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
-
+ingressroute:
+  enabled: false
+  entry_point: web
+  host: argocd.local
+  service:
+    name: argocd-server
+    pointernalPort: 80
+  tls: []
 resources: 
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little

@@ -57,6 +57,16 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
+ingressroute:
+  enabled: false
+  entry_point: web
+  host: challenge.local
+  pathPrefix: /api
+  service:
+    name: argocd-server
+    pointernalPort: 80
+  tls: []
+  strip-prefix-middleware: true
 
 resources:
   # We usually recommend not to specify default resources and to leave this as a conscious
