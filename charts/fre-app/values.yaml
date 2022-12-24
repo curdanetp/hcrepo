@@ -62,6 +62,7 @@ ingressroute:
   name: bke-app
   entry_point: web
   host: challenge.local  
+  withPath: false
   pathPrefix: /
   service:
     name: fre-app

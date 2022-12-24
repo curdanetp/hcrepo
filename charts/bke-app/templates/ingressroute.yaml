@@ -9,7 +9,9 @@ spec:
   - {{ .Values.ingressroute.entry_point }}
   routes:  
   - kind: Rule
+{{- if .Values.ingressroute.withpath }}
     match: Host(`{{ .Values.ingressroute.host }}`) && PathPrefix(`{{ .Values.ingressroute.pathPrefix }}`) 
+{{- end }}
 {{- if .Values.ingressroute.middleware.enabled }}
     middlewares:
     - name: strip-prefix

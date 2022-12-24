@@ -60,12 +60,13 @@ ingressroute:
   enabled: true
   entry_point: web
   host: challenge.local  
+  withPath: false
   pathPrefix: /api
   service:
     name: bke-app
     internalPort: 4000
   middleware: 
-    enabled: true
+    enabled: false
   priority: 10    
   tls: []
 
