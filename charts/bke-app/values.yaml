@@ -37,9 +37,8 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: NodePort
+  type: ClusterIP
   port: 4000
-  nodeport: 30004
   targetport: 4000
 
 ingress:
