@@ -67,7 +67,7 @@ ingressroute:
     name: fre-app
     internalPort: 80
   middleware: 
-    enabled: true
+    enabled: false
   priority: 10    
   tls: []
   
