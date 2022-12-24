@@ -8,10 +8,10 @@ spec:
   entryPoints:
     - {{ .Values.ingressroute.entry_point }}
   routes:
-    {{- if .Values.ingressroute.strip-prefix-middleware.enabled }}
+{{- if .Values.ingressroute.middleware.enabled }}
     middlewares:
       - name: strip-prefix
-    {{- end }}
+{{- end }}
   - match: Host(`{{ .Values.ingressroute.host }}` && PathPrefix(`{{ .Values.ingressroute.pathPrefix }}`) 
     kind: Rule
     services:
