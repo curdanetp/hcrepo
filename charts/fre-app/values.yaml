@@ -58,15 +58,19 @@ ingress:
   #    hosts:
   #      - chart-example.local
 ingressroute:
-  enabled: false
+  enabled: true
+  name: bke-app
   entry_point: web
-  host: challenge.local
-  pathPrefix: /api
+  host: challenge.local  
+  pathPrefix: /
   service:
-    name: argocd-server
-    pointernalPort: 80
+    name: fre-app
+    internalPort: 80
+  middleware: 
+    enabled: true
+  priority: 10    
   tls: []
-  middleware: true
+  
 
 resources:
   # We usually recommend not to specify default resources and to leave this as a conscious

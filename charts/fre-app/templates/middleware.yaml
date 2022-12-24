@@ -1,4 +1,4 @@
-{{- if .Values.ingressroute.strip-prefix-middleware.enabled }}
+{{- if .Values.ingressroute.middleware.enabled }}
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
