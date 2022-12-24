@@ -12,6 +12,10 @@ spec:
 {{- if .Values.ingressroute.withpath }}
     match: Host(`{{ .Values.ingressroute.host }}`) && PathPrefix(`{{ .Values.ingressroute.pathPrefix }}`) 
 {{- end }}
+{{- if not .Values.ingressroute.withpath }}
+    match: Host(`{{ .Values.ingressroute.host }}`)
+{{- end }}
+
 {{- if .Values.ingressroute.middleware.enabled }}
     middlewares:
     - name: strip-prefix
