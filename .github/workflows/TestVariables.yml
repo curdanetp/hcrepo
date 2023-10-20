@@ -1,0 +1,22 @@
+name: TestVariables
+on: [push]
+
+jobs: 
+  Test: 
+    runs-on: ubuntu-latest 
+    steps: 
+    - name: Test 
+      id: prepare-test
+      run: | 
+        echo "image_name=test-image:1.0.0" 
+        echo "::set-output name=image_name::test-image:1.0.0"   
+    outputs:
+      azure_image: ${{ steps.prepare-test.outputs.image_name }}           
+
+  Later:    
+    runs-on: ubuntu-latest
+    needs: Test
+    steps:
+    - name: Later
+      run: |
+        echo "azure_image :" ${{ needs.Test.outputs.azure_image }}
